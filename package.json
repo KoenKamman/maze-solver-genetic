@@ -1,0 +1,35 @@
+{
+  "name": "maze-solver-genetic",
+  "version": "1.0.0",
+  "description": "Maze solver using genetic algorithm.",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KoenKamman/maze-solver-genetic.git"
+  },
+  "keywords": [
+    "maze",
+    "solver",
+    "genetic",
+    "algorithm"
+  ],
+  "author": "Koen Kamman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KoenKamman/maze-solver-genetic/issues"
+  },
+  "homepage": "https://github.com/KoenKamman/maze-solver-genetic#readme",
+  "devDependencies": {
+    "@types/node": "^11.13.7",
+    "nodemon": "^1.18.11",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.4"
+  },
+  "dependencies": {
+    "log-update": "^3.2.0"
+  }
+}
