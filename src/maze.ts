@@ -1,11 +1,14 @@
-import logUpdate from "log-update";
-import { CellTypes } from "./cellTypes";
+import { CellTypes } from "./enums";
 
-export class Maze {
+export default class Maze {
     private maze: CellTypes[][] = [];
+    private start: number[] = [];
+    private end: number[] = [];
+    private requiredSteps: number;
 
-    constructor(width: number, height: number, mapData: Map<number[], CellTypes>) {
+    constructor(width: number, height: number, mapData: Map<number[], CellTypes>, requiredSteps: number) {
         this.initMaze(width, height, mapData);
+        this.requiredSteps = requiredSteps;
     }
 
     private initMaze(width: number, height: number, mapData: Map<number[], CellTypes>): void {
@@ -25,16 +28,42 @@ export class Maze {
 
         // Draw maze
         mapData.forEach((cellType, position) => {
+            if (cellType === CellTypes.START) {
+                this.start = position;
+            } else if (cellType === CellTypes.END) {
+                this.end = position;
+            }
             this.maze[position[0]][position[1]] = cellType;
         });
     }
 
-    public print() {
+    public getStart(): number[] {
+        return this.start;
+    }
+
+    public getEnd(): number[] {
+        return this.end;
+    }
+
+    public getCell(cell: number[]): CellTypes {
+        return this.maze[cell[0]][cell[1]];
+    }
+
+    public setCell(cell: number[], type: CellTypes): void {
+        this.maze[cell[0]][cell[1]] = type;
+    }
+
+    public getRequiredSteps(): number {
+        return this.requiredSteps;
+    }
+
+    public toString(): string {
         const characters = new Map<CellTypes, string>([
             [CellTypes.OPEN, " "],
-            [CellTypes.CLOSED, "■"],
-            [CellTypes.START, "▢"],
-            [CellTypes.END, "▣"]
+            [CellTypes.CLOSED, "▫"],
+            [CellTypes.START, "S"],
+            [CellTypes.END, "E"],
+            [CellTypes.EXPLORED, "■"]
         ]);
 
         let output = "";
@@ -44,6 +73,6 @@ export class Maze {
             }
             output += "\n";
         }
-        logUpdate(output);
+        return output;
     }
 }

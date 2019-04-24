@@ -1,6 +1,9 @@
-import { CellTypes } from "../cellTypes";
+import { CellTypes } from "../enums";
 
-export const maze1 = new Map([
+export const MAZE1_REQUIRED_STEPS = 48;
+export const MAZE1_WIDTH = 18;
+export const MAZE1_HEIGHT = 16;
+export const MAZE1_DATA = new Map([
     [[1, 1], CellTypes.END],
     [[1, 3], CellTypes.CLOSED],
     [[2, 3], CellTypes.CLOSED],
@@ -44,4 +47,4 @@ export const maze1 = new Map([
     [[13, 5], CellTypes.CLOSED],
     [[13, 9], CellTypes.START],
     [[14, 5], CellTypes.CLOSED]
-])
+]);

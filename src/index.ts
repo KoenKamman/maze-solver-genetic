@@ -1,11 +1,7 @@
-import logUpdate from "log-update";
-import { CellTypes } from "./cellTypes";
-import { maze1 } from "./mazes/maze1";
-import { Maze } from "./maze";
+import { MAZE1_DATA, MAZE1_WIDTH, MAZE1_HEIGHT, MAZE1_REQUIRED_STEPS } from "./mazes/maze1";
+import Maze from "./maze";
+import Algorithm from "./algorithm";
 
-const MAZE_WIDTH = 18;
-const MAZE_HEIGHT = 16;
-const MAZE_DATA = maze1;
-
-let maze = new Maze(MAZE_WIDTH, MAZE_HEIGHT, MAZE_DATA);
-maze.print();
+const maze = new Maze(MAZE1_WIDTH, MAZE1_HEIGHT, MAZE1_DATA, MAZE1_REQUIRED_STEPS);
+let algorithm = new Algorithm(maze, 10000, 50);
+algorithm.run();
